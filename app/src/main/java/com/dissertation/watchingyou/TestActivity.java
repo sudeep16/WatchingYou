@@ -22,8 +22,8 @@ import java.util.TimerTask;
 public class TestActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
-    public static String FACEBOOK_COUNTER = "Facebook Counter";
-    public static String WHATSAPP_COUNTER = "Whatsapp Counter";
+    public static String FACEBOOK_COUNTER = "facebook_count";
+    public static String WHATSAPP_COUNTER = "whatsapp_count";
     private TextView facebook_view;
     private TextView whatsapp_view;
 
@@ -49,6 +49,7 @@ public class TestActivity extends AppCompatActivity {
         }
         facebook_view = findViewById(R.id.facebook_time);
         whatsapp_view = findViewById(R.id.whatsapp_time);
+
         TimerTask updateView = new TimerTask() {
 
             @Override
@@ -57,11 +58,15 @@ public class TestActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         long facebook_time = sharedPreferences.getLong(FACEBOOK_COUNTER, 0);
+                        System.out.println("the timer in sharedpreference is: "+facebook_time);
+
                         long second = (facebook_time / 1000) % 60;
                         long minute = (facebook_time / (1000 * 60)) % 60;
                         long hour = (facebook_time / (1000 * 60 * 60));
                         String facebook_val = hour + " h " + minute + " m " + second + " s ";
                         facebook_view.setText(facebook_val);
+
+                        //System.out.println("the facebook time is: "+facebook_val);
 
                         long whatsapp_time = sharedPreferences.getLong(WHATSAPP_COUNTER, 0);
                         second = (whatsapp_time / 1000) % 60;
@@ -86,6 +91,8 @@ public class TestActivity extends AppCompatActivity {
             ApplicationInfo applicationInfo = packageManager.getApplicationInfo(getPackageName(), 0);
             AppOpsManager appOpsManager = (AppOpsManager) getSystemService(APP_OPS_SERVICE);
             int mode = appOpsManager.checkOpNoThrow(AppOpsManager.OPSTR_GET_USAGE_STATS, applicationInfo.uid, applicationInfo.packageName);
+
+
             return (mode==AppOpsManager.MODE_ALLOWED);
         }
         catch (Exception e){

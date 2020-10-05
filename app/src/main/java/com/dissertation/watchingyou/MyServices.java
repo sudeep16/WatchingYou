@@ -56,6 +56,8 @@ public class MyServices extends Service {
 
         //For BackgroundServices
         sharedPreferences = getSharedPreferences("Watching You", Context.MODE_PRIVATE);
+
+        System.out.println("the sharedpreference is: "+sharedPreferences);
         editor = sharedPreferences.edit();
         TimerTask detectApp = new TimerTask() {
 
@@ -68,12 +70,15 @@ public class MyServices extends Service {
                 long endTime = System.currentTimeMillis();
                 long beginTime = endTime-(1000);
                 List<UsageStats> usageStats = usageStatsManager.queryUsageStats(UsageStatsManager.INTERVAL_DAILY, beginTime, endTime);
+
                 if (usageStats != null) {
                     for (UsageStats usageStat : usageStats){
+
                         if(usageStat.getPackageName().toLowerCase().contains("com.whatsapp")){
                             editor.putLong(WHATSAPP_COUNTER, usageStat.getTotalTimeInForeground());
                         }
                         if(usageStat.getPackageName().toLowerCase().contains("com.facebook.katana")){
+                            //System.out.println("the total time used is "+usageStat.getTotalTimeInForeground());
                             editor.putLong(FACEBOOK_COUNTER, usageStat.getTotalTimeInForeground());
                         }
                     }
