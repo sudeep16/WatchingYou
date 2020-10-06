@@ -6,8 +6,6 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.dissertation.watchingyou.ui.dashboard.DashboardFragment;
-
 public class MainActivity extends AppCompatActivity {
 
     @Override

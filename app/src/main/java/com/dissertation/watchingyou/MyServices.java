@@ -1,15 +1,18 @@
 package com.dissertation.watchingyou;
 
+import android.app.ActivityManager;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.app.usage.UsageStats;
 import android.app.usage.UsageStatsManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.IBinder;
+import android.util.Log;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -53,6 +56,13 @@ public class MyServices extends Service {
 
         startForeground(1, notification);
 
+        //Testing
+        ActivityManager am = (ActivityManager) this.getSystemService(ACTIVITY_SERVICE);
+        List <ActivityManager.RunningTaskInfo> taskInfo = am.getRunningTasks(1);
+        Log.d("topActivity", "CURRENT Activity ::" + taskInfo.get(0).topActivity.getClassName());
+        ComponentName componentInfo = taskInfo.get(0).topActivity;
+        componentInfo.getPackageName();
+
 
         //For BackgroundServices
         sharedPreferences = getSharedPreferences("Watching You", Context.MODE_PRIVATE);
@@ -81,6 +91,7 @@ public class MyServices extends Service {
                             //System.out.println("the total time used is "+usageStat.getTotalTimeInForeground());
                             editor.putLong(FACEBOOK_COUNTER, usageStat.getTotalTimeInForeground());
                         }
+                        editor.apply();
                     }
                 }
             }
@@ -88,7 +99,7 @@ public class MyServices extends Service {
         Timer detectAppTimer = new Timer();
         detectAppTimer.scheduleAtFixedRate(detectApp,0, 1000);
 
-        return START_NOT_STICKY;
+        return super.onStartCommand(intent, flags, startId);
     }
 
     @Override
