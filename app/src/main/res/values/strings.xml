@@ -2,5 +2,4 @@
     <string name="app_name">Watching You</string>
     <string name="title_activity_dashboard">MainActivity</string>
     <string name="text">Light Theme</string>
-    <string name="text2">Dark Theme</string>
 </resources>

@@ -1,21 +1,31 @@
 package com.dissertation.watchingyou;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 public class ThemeSelector extends AppCompatActivity {
 
-    Button themeSelector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_theme_selector);
+    }
 
-//        themeSelector = R.id.themeButton;
+    public void btnDarkTheme(View view) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        startActivity(new Intent(getApplicationContext(), TestActivity.class));
+        finish();
+    }
 
-
+    public void btnLightTheme(View view) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        startActivity(new Intent(getApplicationContext(), TestActivity.class));
+        finish();
     }
 }

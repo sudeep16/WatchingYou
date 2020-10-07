@@ -44,14 +44,17 @@ public class TestActivity extends AppCompatActivity {
             case R.id.theme:
                 Intent intent = new Intent(TestActivity.this, ThemeSelector.class);
                 startActivity(intent);
+                return true;
+
+            case R.id.about_us:
+                intent= new Intent(TestActivity.this, AboutUs.class);
+                startActivity(intent);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
         }
 
-        switch (item.getItemId()){
-            case R.id.theme:
-                Intent intent = new Intent(TestActivity.this, AboutUs.class);
-                startActivity(intent);
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)

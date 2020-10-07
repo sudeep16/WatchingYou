@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/mainBackground"
     tools:context=".TestActivity">
 
     <LinearLayout
@@ -23,6 +24,7 @@
                 android:layout_height="match_parent"
                 android:padding="2dp"
                 android:text="Facebook"
+                android:textColor="@color/textColor"
                 android:textSize="20sp" />
 
             <TextView
@@ -30,6 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:padding="2dp"
+                android:textColor="@color/textColor"
                 android:text="Facebook" />
 
 
@@ -47,6 +50,7 @@
                 android:layout_height="match_parent"
                 android:padding="2dp"
                 android:text="Whatsapp"
+                android:textColor="@color/textColor"
                 android:textSize="20sp" />
 
             <TextView
@@ -54,6 +58,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:padding="2dp"
+                android:textColor="@color/textColor"
                 android:text="Whatsapp" />
 
 
