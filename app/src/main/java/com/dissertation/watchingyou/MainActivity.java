@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         Intent serviceIntent = new Intent(this, MyServices.class);
         startService(serviceIntent);
 
-        Intent intent = new Intent(MainActivity.this, TestActivity.class);
+        Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
         startActivity(intent);
 
         return true;

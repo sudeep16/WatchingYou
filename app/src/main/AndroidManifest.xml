@@ -17,9 +17,10 @@
         android:roundIcon="@drawable/eyes"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AboutUs"></activity>
+        <activity android:name=".TimerActivity"></activity>
+        <activity android:name=".AboutUs" />
         <activity android:name=".ThemeSelector" />
-        <activity android:name=".TestActivity" />
+        <activity android:name=".DashboardActivity" />
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

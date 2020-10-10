@@ -13,7 +13,6 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.IBinder;
 import android.util.Log;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -23,9 +22,12 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static com.dissertation.watchingyou.DashboardActivity.INSTAGRAM_COUNTER;
+import static com.dissertation.watchingyou.DashboardActivity.SKYPE_COUNTER;
+import static com.dissertation.watchingyou.DashboardActivity.YOUTUBE_COUNTER;
 import static com.dissertation.watchingyou.NotificationCreator.CHANNEL_ID;
-import static com.dissertation.watchingyou.TestActivity.FACEBOOK_COUNTER;
-import static com.dissertation.watchingyou.TestActivity.WHATSAPP_COUNTER;
+import static com.dissertation.watchingyou.DashboardActivity.FACEBOOK_COUNTER;
+import static com.dissertation.watchingyou.DashboardActivity.WHATSAPP_COUNTER;
 
 public class MyServices extends Service {
 
@@ -91,6 +93,19 @@ public class MyServices extends Service {
                             //System.out.println("the total time used is "+usageStat.getTotalTimeInForeground());
                             editor.putLong(FACEBOOK_COUNTER, usageStat.getTotalTimeInForeground());
                         }
+                        if(usageStat.getPackageName().toLowerCase().contains("com.google.android.youtube")){
+                            //System.out.println("the total time used is "+usageStat.getTotalTimeInForeground());
+                            editor.putLong(YOUTUBE_COUNTER, usageStat.getTotalTimeInForeground());
+                        }
+                        if(usageStat.getPackageName().toLowerCase().contains("com.instagram.android")){
+                            //System.out.println("the total time used is "+usageStat.getTotalTimeInForeground());
+                            editor.putLong(INSTAGRAM_COUNTER, usageStat.getTotalTimeInForeground());
+                        }
+                        if(usageStat.getPackageName().toLowerCase().contains("com.skype.raider")){
+                            //System.out.println("the total time used is "+usageStat.getTotalTimeInForeground());
+                            editor.putLong(SKYPE_COUNTER, usageStat.getTotalTimeInForeground());
+                        }
+
                         editor.apply();
                     }
                 }
